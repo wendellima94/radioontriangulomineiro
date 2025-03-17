@@ -1,0 +1,251 @@
+/* Estilos para o header fixo */
+#header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #333;
+  color: white;
+  padding: 10px 0;
+  z-index: 1000; /* Garantir que fique acima de outros elementos */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra para dar profundidade */
+}
+
+#header nav ul {
+  display: flex;
+  justify-content: center;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+#header nav ul li {
+  margin: 0 20px;
+}
+
+#header nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  padding: 10px;
+}
+
+#header nav ul li a:hover {
+  background-color: #555;
+  border-radius: 5px;
+}
+
+/* Estilos para a responsividade */
+@media (max-width: 768px) {
+  #header nav ul {
+    flex-direction: column;
+  }
+
+  #header nav ul li {
+    margin: 10px 0;
+  }
+}
+
+/* Ajustando o espaçamento do conteúdo */
+body {
+  margin-top: 60px; /* Adiciona espaçamento para o header fixo */
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+main {
+  overflow-x: hidden;
+  padding: 0 0 15% 0;
+}
+.slider-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+.slider img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: transform 0.8s, opacity 0.8s;
+}
+/* Estilos para os botões fixos e centralizados verticalmente */
+.buttons {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  transform: translateY(-50%);
+  pointer-events: none; /* Para evitar que interfiram na navegação */
+}
+
+.button {
+  background: rgba(255, 255, 255, 0);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-size: 80px;
+  padding: 15px 20px;
+  pointer-events: all; /* R
+  eativar clique nos botões */
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .button {
+    font-size: 18px;
+    padding: 10px 15px;
+  }
+}
+/* Estilo do bloco de notícias */
+.news-section {
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.news-section h2 {
+  margin-bottom: 20px;
+  font-size: 24px;
+}
+
+.news-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.news-item {
+  background: #fff;
+  color: #333;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+  display: flex;
+  flex-direction: column;
+}
+
+.news-item:hover {
+  transform: scale(1.05);
+}
+
+.news-item img {
+  width: 100%;
+  height: auto;
+  max-height: 250px;
+}
+
+.news-item h3 {
+  margin: 15px;
+  font-size: 18px;
+}
+
+.news-item p {
+  padding: 0 15px 15px;
+  font-size: 14px;
+}
+
+.news-item a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .news-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .news-item {
+    flex: 1 1 calc(50% - 20px);
+  }
+}
+
+@media (max-width: 480px) {
+  .news-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .news-item {
+    flex: 1 1 100%;
+  }
+}
+
+
+/* Bloco principal dos locutores */
+.locutores-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  padding: 20px;
+  width: 100%;
+}
+
+/* Card do locutor */
+.locutor-card {
+  width: 250px;
+  margin: 20px;
+  text-align: center;
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Efeito de hover */
+.locutor-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Imagem do locutor */
+.locutor-img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+/* Nome do locutor */
+.locutor-name {
+  font-size: 1.2em;
+  margin-top: 10px;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Efeito de zoom na imagem ao passar o mouse */
+.locutor-card:hover .locutor-img {
+  transform: scale(1.1);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .locutores-section {
+      justify-content: center;
+  }
+
+  .locutor-card {
+      width: 200px;
+  }
+}
+
+@media (max-width: 480px) {
+  .locutores-section {
+      justify-content: center;
+  }
+
+  .locutor-card {
+      width: 160px;
+  }
+}
+

@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ONFM Triangulo Mineiro</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+
+    <link rel="stylesheet" href="./css/audioplayer.css" />
+    <link rel="stylesheet" href="./css/audioplayer.css" />
+    <link rel="stylesheet" href="./css/styles.css" />
+  </head>
+
+  <style></style>
+
+  <body>
+    <!-- Header fixo -->
+    <header id="header">
+      <nav>
+        <ul>
+          <li><a href="#">Início</a></li>
+          <li><a href="#">Sobre</a></li>
+          <li><a href="#">Serviços</a></li>
+          <li><a href="#">Contato</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <div class="slider-container">
+        <div class="slider">
+          <img
+            src="./images/bg-top-2.png"
+            class="slide"
+            alt="Imagem 1"
+          />
+          <img
+            src="./images/bg-top-3.png"
+            class="slide"
+            alt="Imagem 2"
+            style="display: none"
+          />
+          <img
+            src="images/bg-top-1.png"
+            class="slide"
+            alt="Imagem 3"
+            style="display: none"
+          />
+          <img
+            src="./images/bg-top-3.png"
+            class="slide"
+            alt="Imagem 4"
+            style="display: none"
+          />
+        </div>
+        <div class="buttons">
+          <button class="button" onclick="prevImage()">
+            <i class="fas fa-chevron-left"></i>
+            <!-- Ícone de seta para a esquerda -->
+          </button>
+          <button class="button" onclick="nextImage()">
+            <i class="fas fa-chevron-right"></i>
+            <!-- Ícone de seta para a direita -->
+          </button>
+        </div>
+      </div>
+
+      <!-- locutores -->
+      <section class="locutores-section">
+        <div class="locutor-card">
+            <img src="https://th.bing.com/th/id/OIP.W1_cmnXqUYGgcUt2QQdCKwHaEK?rs=1&pid=ImgDetMain" alt="Locutor 1" class="locutor-img">
+            <h3 class="locutor-name">Locutor 1</h3>
+        </div>
+        <div class="locutor-card">
+            <img src="https://th.bing.com/th/id/OIP.18dq0GX6lBqo19aOUYK3SgHaHa?pid=ImgDet&w=474&h=474&rs=1" alt="Locutor 2" class="locutor-img">
+            <h3 class="locutor-name">Locutor 2</h3>
+        </div>
+        <div class="locutor-card">
+            <img src="https://www.oexplorador.com.br/exp/wp-content/uploads/2020/11/aa-112.jpg" alt="Locutor 3" class="locutor-img">
+            <h3 class="locutor-name">Locutor 3</h3>
+        </div>
+        <div class="locutor-card">
+            <img src="https://malucellidotlive.files.wordpress.com/2019/03/diguinho-coruja-divulgac3a7c3a3o-1.jpeg?w=1024" alt="Locutor 4" class="locutor-img">
+            <h3 class="locutor-name">Locutor 1</h3>
+        </div>
+        <div class="locutor-card">
+            <img src="https://th.bing.com/th/id/OIP.Ykpat9OeVYLgg8ro70lBIAHaEo?rs=1&pid=ImgDetMain" alt="Locutor 5" class="locutor-img">
+            <h3 class="locutor-name">Locutor 2</h3>
+        </div>
+      
+        <!-- Adicione mais locutores aqui -->
+    </section>
+
+      <!-- Bloco de Notícias -->
+      <section class="news-section">
+        <h2>Últimas Notícias</h2>
+        <div class="news-grid" id="newsContainer">
+          <!-- Notícias serão carregadas dinamicamente aqui -->
+        </div>
+      </section>
+    </main>
+
+    <div></div>
+    <footer>
+      <div>a</div>
+    </footer>
+
+    <div class="player-container">
+      <!-- Capa do Álbum + Nome da Música -->
+      <div class="album-info">
+        <img
+          src="./images/logo-white-bg.jpeg"
+          alt="Capa do Álbum"
+          class="album-cover"
+        />
+        <div class="track-info">
+          <div class="track-title">Smash It Up</div>
+          <div class="track-artist">Facivii - Endless Me</div>
+        </div>
+      </div>
+
+      <!-- Botão de Play/Pause + Barra de Progresso -->
+      <div class="play-progress-container">
+        <button class="play-btn" id="playPause">▶️</button>
+        <div class="progress-container" id="progressContainer">
+          <div class="progress-bar" id="progressBar"></div>
+        </div>
+      </div>
+
+      <!-- Controle de Volume -->
+      <div class="volume-container">
+        <span class="volume-icon">🔊</span>
+        <input
+          type="range"
+          class="volume-control"
+          id="volumeControl"
+          min="0"
+          max="1"
+          step="0.1"
+        />
+      </div>
+    </div>
+
+    <audio id="audioPlayer">
+      <source src="https://r16.ciclano.io:15043/stream" type="audio/mpeg" />
+      Seu navegador não suporta o elemento de áudio.
+    </audio>
+
+    <script src="./javascript/audioplayer.js"></script>
+
+    <script>
+      // Função para buscar notícias do JSON e exibir no site
+      async function loadNews() {
+        const response = await fetch("./data/news.json"); // Substitua pelo endpoint real da API quando disponível
+        const data = await response.json();
+        const newsContainer = document.getElementById("newsContainer");
+
+        data.news.forEach((news) => {
+          const article = document.createElement("article");
+          article.classList.add("news-item");
+          article.innerHTML = `
+              <a href="${news.url}" target="_blank">
+                <img src="${news.image}" alt="${news.title}">
+                <h3>${news.title}</h3>
+                <p>${news.description}</p>
+              </a>
+            `;
+          newsContainer.appendChild(article);
+        });
+      }
+
+      // Chamada da função ao carregar a página
+      document.addEventListener("DOMContentLoaded", loadNews);
+    </script>
+    <script>
+      const images = document.querySelectorAll(".slide");
+      let index = 0;
+      const animations = [
+        "translateX(100%)",
+        "translateX(-100%)",
+        "translateY(100%)",
+        "translateY(-100%)",
+        "scale(0)",
+        "scale(2)",
+        "rotate(180deg)",
+      ];
+
+      function changeImage(newIndex) {
+        const current = images[index];
+        const next = images[newIndex];
+
+        const animation =
+          animations[Math.floor(Math.random() * animations.length)];
+        current.style.transform = animation;
+        current.style.opacity = "0";
+        setTimeout(() => {
+          current.style.display = "none";
+          current.style.transform = "none";
+          current.style.opacity = "1";
+        }, 800);
+
+        next.style.display = "block";
+        index = newIndex;
+      }
+
+      function nextImage() {
+        let newIndex = (index + 1) % images.length;
+        changeImage(newIndex);
+      }
+
+      function prevImage() {
+        let newIndex = (index - 1 + images.length) % images.length;
+        changeImage(newIndex);
+      }
+
+      setInterval(nextImage, 3000);
+    </script>
+  </body>
+</html>

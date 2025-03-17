@@ -1,0 +1,52 @@
+Estilos para o header fixo
+#header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #333;
+    color: white;
+    padding: 10px 0;
+    z-index: 1000; /* Garantir que fique acima de outros elementos */
+  }
+  
+  #header nav ul {
+    display: flex;
+    justify-content: center;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  #header nav ul li {
+    margin: 0 20px;
+  }
+  
+  #header nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 10px;
+  }
+  
+  #header nav ul li a:hover {
+    background-color: #555;
+    border-radius: 5px;
+  }
+  
+  /* Estilos para a responsividade */
+  @media (max-width: 768px) {
+    #header nav ul {
+      flex-direction: column;
+    }
+  
+    #header nav ul li {
+      margin: 10px 0;
+    }
+  }
+  
+  /* Ajustando o espaçamento do conteúdo */
+  body {
+    margin-top: 60px; /* Adiciona espaçamento para o header fixo */
+  }
+  

@@ -1,0 +1,41 @@
+{
+    "news": [
+      {
+        "title": "Panela de óleo e fritadeira causam incêndios em JF",
+        "description": "Incêndios recentes em Juiz de Fora foram causados por acidentes domésticos envolvendo óleo quente e fritadeiras.",
+        "image": "https://tvjf.com.br/wp-content/uploads/2025/02/WhatsApp-Image-2025-02-11-at-07.08.31-768x1365.jpeg",
+        "url": "https://tvjf.com.br/panela-de-oleo-e-fritadeira-causam-incendios-em-jf/"
+      },
+      {
+        "title": "Filhote de cuíca-de-três-listras é resgatado em Juiz de Fora",
+        "description": "Um raro filhote de cuíca-de-três-listras foi resgatado na área urbana de Juiz de Fora e encaminhado para avaliação veterinária.",
+        "image": "https://tvjf.com.br/wp-content/uploads/2025/02/WhatsApp-Image-2025-02-05-at-20.22.09-1.jpeg",
+        "url": "https://tvjf.com.br/filhote-de-cuica-de-tres-listras-e-resgatado-em-juiz-de-fora/"
+      },
+      {
+        "title": "Carro cai em ribanceira na BR 267",
+        "description": "Um veículo perdeu o controle e caiu em uma ribanceira na BR 267, causando ferimentos nos ocupantes. ",
+        "image": "https://tvjf.com.br/wp-content/uploads/2025/01/WhatsApp-Image-2025-01-30-at-06.30.15-1024x768.jpeg",
+        "url": "https://tvjf.com.br/carro-cai-em-ribanceira-na-br-267/"
+      },
+      {
+        "title": "Temporal causa alagamentos e assusta moradores em JF",
+        "description": "Chuvas intensas provocaram alagamentos em diversas regiões de Juiz de Fora, preocupando os moradores.",
+        "image": "https://tvjf.com.br/wp-content/uploads/2025/01/WhatsApp-Image-2025-01-29-at-06.45.32-1024x576.jpeg",
+        "url": "https://tvjf.com.br/temporal-causa-alagamentos-e-assusta-moradores-em-jf/"
+      },
+      {
+        "title": "Incêndio em açougue de Juiz de Fora",
+        "description": "Um açougue no centro de Juiz de Fora foi atingido por um incêndio de grandes proporções, causando perdas materiais significativas.",
+        "image": "https://tvjf.com.br/wp-content/uploads/2025/01/WhatsApp-Image-2025-01-28-at-02.01.31-1024x768.jpeg",
+        "url": "https://tvjf.com.br/incendio-em-acougue-de-juiz-de-fora/"
+      },
+      {
+        "title": "Acidente com dois mortos na BR 267",
+        "description": "Uma colisão frontal na BR 267 resultou na morte de duas pessoas e deixou outras feridas.",
+        "image": "https://tvjf.com.br/wp-content/uploads/2025/01/WhatsApp-Image-2025-01-27-at-09.47.02-1-1024x768.jpeg",
+        "url": "https://tvjf.com.br/acidente-com-dois-mortos-na-br-267/"
+      }
+    ]
+  }
+  

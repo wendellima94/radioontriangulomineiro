@@ -1,0 +1,143 @@
+body {
+  background: rgb(236, 166, 47);
+  background: linear-gradient(
+    90deg,
+    rgba(236, 166, 47, 1) 9%,
+    rgba(233, 123, 54, 0.9831582291119573) 40%,
+    rgba(218, 63, 81, 1) 83%,
+    rgba(215, 44, 87, 0.9159313383556548) 97%
+  );
+  color: #000;
+  font-family: Arial, sans-serif;
+  padding-bottom: 70px;
+}
+
+/* Player fixo no rodapé */
+.player-container {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgb(236, 166, 47);
+  background: linear-gradient(
+    90deg,
+    rgba(236, 166, 47, 1) 9%,
+    rgba(233, 123, 54, 0.9831582291119573) 40%,
+    rgba(218, 63, 81, 1) 83%,
+    rgba(215, 44, 87, 0.9159313383556548) 97%
+  );
+  padding: 10px 5%; /* Ajustado para evitar quebra */
+  border-top: 2px solid rgba(255, 255, 255, 0.2);
+  flex-wrap: wrap; /* Permite que elementos se ajustem no mobile */
+}
+
+/* Informações do álbum */
+.album-info {
+  display: flex;
+  align-items: center;
+}
+
+.album-cover {
+  width: 50px;
+  height: 50px;
+  border-radius: 5px;
+  object-fit: cover;
+}
+
+.track-info {
+  display: flex;
+  flex-direction: column;
+  margin-left: 10px;
+}
+
+.track-title {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.track-artist {
+  font-size: 14px;
+  opacity: 0.7;
+}
+
+/* Botão de play e barra de progresso */
+.play-progress-container {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  justify-content: center;
+}
+
+.play-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+/* Barra de progresso */
+.progress-container {
+  width: 30vw;
+  height: 5px;
+  background: #444;
+  border-radius: 5px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  width: 0%;
+  border-radius: 5px;
+  background: repeating-linear-gradient(to right, red 0%, blue 50%, red 100%);
+  background-size: 200% auto;
+  animation: gradient 2s infinite linear;
+}
+
+/* Ícone e controle de volume */
+.volume-container {
+  display: flex;
+  align-items: center;
+}
+
+.volume-icon {
+  font-size: 20px;
+  margin-right: 5px;
+}
+
+.volume-control {
+  width: 70px;
+}
+
+/* Ajustes para telas menores */
+@media (max-width: 768px) {
+  .player-container {
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    text-align: center;
+  }
+
+  .track-info {
+    text-align: center;
+  }
+
+  .play-progress-container {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .progress-container {
+    width: 60vw; /* Aumentado para melhor adaptação */
+  }
+
+  .volume-container {
+    margin-top: 10px;
+  }
+}
