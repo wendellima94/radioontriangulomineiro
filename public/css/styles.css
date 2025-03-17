@@ -4,13 +4,37 @@
   top: 0;
   left: 0;
   width: 100%;
-  background-color: #333;
-  color: white;
+  background: rgb(236, 166, 47);
+  background: linear-gradient(
+    90deg,
+    rgba(236, 166, 47, 1) 9%,
+    rgba(233, 123, 54, 0.9831582291119573) 40%,
+    rgba(218, 63, 81, 1) 83%,
+    rgba(215, 44, 87, 0.9159313383556548) 97%
+  );  color: white;
   padding: 10px 0;
   z-index: 1000; /* Garantir que fique acima de outros elementos */
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra para dar profundidade */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
+/* Contêiner da logo */
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  max-width: 100%;
+  height: auto;
+  width: 80px; /* Ajuste o tamanho padrão da logo */
+}
+
+/* Estilo do menu */
 #header nav ul {
   display: flex;
   justify-content: center;
@@ -37,6 +61,11 @@
 
 /* Estilos para a responsividade */
 @media (max-width: 768px) {
+  /* Logo se ajustando ao tamanho da tela */
+  .logo {
+    width: 120px; /* Reduz a largura da logo em telas pequenas */
+  }
+
   #header nav ul {
     flex-direction: column;
   }
@@ -180,7 +209,6 @@ main {
   }
 }
 
-
 /* Bloco principal dos locutores */
 .locutores-section {
   display: flex;
@@ -231,21 +259,20 @@ main {
 /* Responsividade */
 @media (max-width: 768px) {
   .locutores-section {
-      justify-content: center;
+    justify-content: center;
   }
 
   .locutor-card {
-      width: 200px;
+    width: 200px;
   }
 }
 
 @media (max-width: 480px) {
   .locutores-section {
-      justify-content: center;
+    justify-content: center;
   }
 
   .locutor-card {
-      width: 160px;
+    width: 160px;
   }
 }
-
