@@ -11,15 +11,14 @@
     rgba(233, 123, 54, 0.9831582291119573) 40%,
     rgba(218, 63, 81, 1) 83%,
     rgba(215, 44, 87, 0.9159313383556548) 97%
-  );  color: white;
-  padding: 10px 0;
+  );
+  color: white;
+  padding: 10px 120px;
   z-index: 1000; /* Garantir que fique acima de outros elementos */
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra para dar profundidade */
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-left: 20px;
-  padding-right: 20px;
 }
 
 /* Contêiner da logo */
@@ -137,6 +136,7 @@ main {
 .news-section {
   padding: 40px 20px;
   text-align: center;
+  background-color: rgba(255, 255, 255, 0.199);
 }
 
 .news-section h2 {
@@ -274,5 +274,74 @@ main {
 
   .locutor-card {
     width: 160px;
+  }
+}
+
+/* Estilos para o container */
+/* Estilos para o container */
+.programacao-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 20px;
+  padding: 10px;
+  border-radius: 16px;
+  background-color: #00000067;
+  border-left: 2px solid #000; /* Borda lateral */
+  border-right: 2px solid #000; /* Borda lateral */
+}
+
+/* Estilos para cada item da programação */
+.programacao-item {
+  flex: 1 1 12%; /* 12% de largura para cada item, ajustável */
+  margin: 10px;
+  padding: 15px;
+  background-color: rgba(233, 123, 54, 0.9831582291119573);
+  color: #fff !important;
+
+  border-radius: 8px;
+  text-align: center;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.programacao-item h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.programacao-item p {
+  font-size: 14px;
+  margin: 5px 0;
+}
+
+.programacao-item .descricao {
+  font-size: 12px;
+  color: #f6eded;
+  font-style: italic;
+  margin-top: 10px;
+}
+
+.programacao-item .descricao:hover {
+  color: #fff !important;
+
+}
+/* Animação no hover */
+.programacao-item:hover {
+  transform: scale(1.1);
+  background-color: rgba(218, 63, 81, 1);
+  color: #fff !important;
+
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .programacao-item {
+    flex: 1 1 28%; /* Ajuste para telas menores */
+  }
+}
+
+@media (max-width: 480px) {
+  .programacao-item {
+    flex: 1 1 48%; /* Ajuste para telas muito pequenas */
   }
 }
