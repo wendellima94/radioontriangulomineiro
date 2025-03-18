@@ -13,7 +13,6 @@
     rgba(215, 44, 87, 0.9159313383556548) 97%
   );
   color: white;
-
   padding: 24px 120px;
   z-index: 1000; /* Garantir que fique acima de outros elementos */
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra para dar profundidade */
@@ -77,7 +76,7 @@
 
 /* Ajustando o espaçamento do conteúdo */
 body {
-  margin-top: 60px;
+  margin-top: 0;
 }
 
 * {
@@ -92,8 +91,10 @@ main {
 .slider-container {
   position: relative;
   width: 100vw;
-  height: 100vh;
+  height: 80vh;
   overflow: hidden;
+  margin: 40px 0;
+  padding: 40px 0;
 }
 .slider img {
   position: absolute;
@@ -128,7 +129,6 @@ main {
 
 /* Responsividade */
 @media (max-width: 768px) {
-
   .slider-container {
     position: relative;
     width: 100vw;
@@ -152,7 +152,8 @@ main {
 .news-section {
   padding: 40px 20px;
   text-align: center;
-  background-color: rgba(255, 255, 255, 0.199);
+  background: #04020831;
+  color: #fff;
 }
 
 .news-section h2 {
@@ -233,13 +234,6 @@ main {
   padding: 20px;
   width: 100%;
   background: rgb(236, 166, 47);
-  background: linear-gradient(
-    90deg,
-    rgba(236, 166, 47, 1) 9%,
-    rgba(233, 123, 54, 0.9831582291119573) 40%,
-    rgba(218, 63, 81, 1) 83%,
-    rgba(215, 44, 87, 0.9159313383556548) 97%
-  );
 }
 
 /* Card do locutor */
@@ -255,8 +249,9 @@ main {
 
 /* Efeito de hover */
 .locutor-card:hover {
-  transform: scale(1.05);
+  transform: scale(1.08);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  background: #fff;
 }
 
 /* Imagem do locutor */
@@ -347,14 +342,12 @@ main {
 
 .programacao-item .descricao:hover {
   color: #fff !important;
-
 }
 /* Animação no hover */
 .programacao-item:hover {
   transform: scale(1.1);
   background-color: rgba(218, 63, 81, 1);
   color: #fff !important;
-
 }
 
 /* Responsividade */
