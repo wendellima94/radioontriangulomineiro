@@ -7,10 +7,10 @@ const volumeControl = document.getElementById("volumeControl");
 playPause.addEventListener("click", () => {
   if (audio.paused) {
     audio.play();
-    playPause.textContent = "⏸️";
+    playPause.textContent = "Rádio Ao Vivo ⏸️";
   } else {
     audio.pause();
-    playPause.textContent = "▶️";
+    playPause.textContent = "Rádio Ao Vivo ▶️";
   }
 });
 

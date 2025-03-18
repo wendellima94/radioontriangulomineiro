@@ -24,10 +24,10 @@ body {
   background: rgb(236, 166, 47);
   background: linear-gradient(
     90deg,
-    rgba(236, 166, 47, 1) 9%,
-    rgba(233, 123, 54, 0.9831582291119573) 40%,
-    rgba(218, 63, 81, 1) 83%,
-    rgba(215, 44, 87, 0.9159313383556548) 97%
+    rgb(215, 44, 87) 9%,
+    rgba(218, 63, 81, 1) 40%,
+    rgba(233, 123, 54, 0.9831582291119573) 83%,
+    rgba(236, 166, 47, 1) 97%
   );
   padding: 10px 5%; /* Ajustado para evitar quebra */
   border-top: 2px solid rgba(255, 255, 255, 0.2);
@@ -44,7 +44,7 @@ body {
   width: 50px;
   height: 50px;
   border-radius: 5px;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .track-info {

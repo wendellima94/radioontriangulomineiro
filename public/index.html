@@ -30,17 +30,20 @@
   <body>
     <!-- Header fixo -->
     <header id="header">
-      <!-- <div class="logo-container">
-        <img src="./images/logo-no-bg.png" alt="Logo" class="logo" />
-      </div> -->
+      <img src="./images/logo-white-no-bg.png" alt="Logo" class="logo" />
+
       <nav>
         <ul>
+          <li></li>
           <li><a href="#">Início</a></li>
           <li><a href="#">Sobre</a></li>
           <li><a href="#">Serviços</a></li>
           <li><a href="#">Contato</a></li>
         </ul>
       </nav>
+      <div class="logo-container">
+        <button class="play-btn" id="playPause">Rádio Ao Vivo ▶️</button>
+      </div>
     </header>
 
     <main>
@@ -215,12 +218,12 @@
       <!-- Capa do Álbum + Nome da Música -->
       <div class="album-info">
         <img
-          src="./images/logo-white-bg.jpeg"
+          src="https://th.bing.com/th/id/OIP.7MjRNKqP_xjTBliJEsrKVAHaHa?rs=1&pid=ImgDetMain"
           alt="Capa do Álbum"
           class="album-cover"
         />
         <div class="track-info">
-          <div class="track-title">Smash It Up</div>
+          <div class="track-title">Deft Punk</div>
           <div class="track-artist">Facivii - Endless Me</div>
         </div>
       </div>
@@ -278,6 +281,7 @@
       // Chamada da função ao carregar a página
       document.addEventListener("DOMContentLoaded", loadNews);
     </script>
+
     <script>
       const images = document.querySelectorAll(".slide");
       let index = 0;
