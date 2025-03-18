@@ -1,12 +1,12 @@
 body {
-  background: rgb(236, 166, 47);
-  background: linear-gradient(
+  background: #fff;
+  /* background: linear-gradient(
     90deg,
     rgba(236, 166, 47, 1) 9%,
     rgba(233, 123, 54, 0.9831582291119573) 40%,
     rgba(218, 63, 81, 1) 83%,
     rgba(215, 44, 87, 0.9159313383556548) 97%
-  );
+  ); */
   color: #000;
   font-family: Arial, sans-serif;
   padding-bottom: 70px;
@@ -135,7 +135,7 @@ body {
   }
   .play-progress-container {
     width: 100%;
-    flex-direction: column; 
+    flex-direction: column;
     margin: 0 !important;
     background: none;
     padding: 8px 0;

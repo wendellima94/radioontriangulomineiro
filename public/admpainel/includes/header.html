@@ -1,0 +1,48 @@
+
+  <style>
+    .admin-header {
+      background: #333;
+      padding: 15px;
+      text-align: center;
+    }
+
+    .admin-header nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .admin-header nav ul li {
+      display: inline;
+      margin: 0 15px;
+    }
+
+    .admin-header nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .admin-header nav ul li a:hover {
+      text-decoration: underline;
+    }
+  </style>
+  
+  <!-- O header será injetado aqui pelo JavaScript -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const headerHTML = `
+        <header class="admin-header">
+          <nav>
+            <ul>
+              <li><a href="index.html">Dashboard</a></li>
+              <li><a href="categories.html">Gerenciar Categorias</a></li>
+              <li><a href="news.html">Gerenciar Notícias</a></li>
+              <li><a href="users.html">Gerenciar Usuários</a></li>
+            </ul>
+          </nav>
+        </header>
+      `;
+      document.body.insertAdjacentHTML("afterbegin", headerHTML);
+    });
+  </script>

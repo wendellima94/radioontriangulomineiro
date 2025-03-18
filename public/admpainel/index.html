@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Painel de Administração</title>
+    <link rel="icon" type="image/x-icon" href="../images/logo-white-bg.jpeg" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <!-- O header será injetado aqui pelo JavaScript -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const headerHTML = `
+        <header class="admin-header">
+          <nav>
+            <ul>
+              <li><a href="index.html">Dashboard</a></li>
+              <li><a href="categories.html">Gerenciar Categorias</a></li>
+              <li><a href="news.html">Gerenciar Notícias</a></li>
+              <li><a href="users.html">Gerenciar Usuários</a></li>
+            </ul>
+          </nav>
+        </header>
+      `;
+        document.body.insertAdjacentHTML("afterbegin", headerHTML);
+      });
+    </script>
+
+    <div class="admin-panel">
+      <h1>Painel de Administração - Adicionar Notícia</h1>
+
+      <form id="news-form">
+        <label for="title">Título da Notícia:</label>
+        <input type="text" id="title" name="title" required />
+
+        <label for="description">Descrição:</label>
+        <textarea id="description" name="description" required></textarea>
+
+        <label for="url">URL da Notícia:</label>
+        <input type="url" id="url" name="url" required />
+
+        <label for="image">Imagem:</label>
+        <input type="url" id="image" name="image" required />
+
+        <label for="categories">Categorias:</label>
+        <select id="categories" name="categories" multiple required>
+          <!-- As categorias serão carregadas aqui pelo JavaScript -->
+        </select>
+
+        <button type="submit">Adicionar Notícia</button>
+      </form>
+
+      <div id="message"></div>
+      <h2>Gerenciar Notícias - Últimas Noticias</h2>
+
+      <div class="search-container">
+        <input
+          type="text"
+          id="search-title"
+          placeholder="Pesquisar por título..."
+          onkeyup="filterNews()"
+        />
+
+        <select id="search-category" onchange="filterNews()">
+          <option value="">Filtrar por categoria</option>
+          <!-- As categorias serão carregadas aqui -->
+        </select>
+      </div>
+
+      <div id="news-list" class="news-container"></div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

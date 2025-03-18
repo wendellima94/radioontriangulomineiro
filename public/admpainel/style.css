@@ -1,0 +1,155 @@
+body {
+  font-family: Arial, sans-serif;
+  background: rgb(236, 166, 47);
+  background: linear-gradient(
+    90deg,
+    rgba(236, 166, 47, 1) 9%,
+    rgba(233, 123, 54, 0.9831582291119573) 40%,
+    rgba(218, 63, 81, 1) 83%,
+    rgba(215, 44, 87, 0.9159313383556548) 97%
+  );
+  color: #000;
+  margin: 0;
+  padding: 0;
+}
+
+.admin-panel {
+  width: 80%;
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+form label {
+  margin: 10px 0 5px;
+  font-weight: bold;
+}
+
+form input,
+form textarea,
+form select {
+  padding: 10px;
+  margin-bottom: 20px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  color: #000 !important;
+}
+
+form button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #000;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+form button:hover {
+  background-color: #0056b3;
+}
+
+#message {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.admin-panel {
+  max-width: 800px;
+  margin: auto;
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.search-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.search-container input,
+.search-container select {
+  padding: 10px;
+  width: 48%;
+}
+
+.news-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.news-item {
+  background: white;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.news-item h3 {
+  margin: 0;
+  color: #333;
+}
+
+.news-item p {
+  color: #555;
+}
+
+.news-item img {
+  max-width: 100%;
+  height: auto;
+  margin-top: 10px;
+  border-radius: 5px;
+}
+
+.news-item button {
+  margin-top: 10px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.admin-header {
+  background: #333;
+  padding: 15px;
+  text-align: center;
+}
+
+.admin-header nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.admin-header nav ul li {
+  display: inline;
+  margin: 0 15px;
+}
+
+.admin-header nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.admin-header nav ul li a:hover {
+  text-decoration: underline;
+}
