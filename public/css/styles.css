@@ -13,7 +13,8 @@
     rgba(215, 44, 87, 0.9159313383556548) 97%
   );
   color: white;
-  padding: 10px 120px;
+
+  padding: 24px 120px;
   z-index: 1000; /* Garantir que fique acima de outros elementos */
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra para dar profundidade */
   display: flex;
@@ -30,7 +31,7 @@
 .logo {
   max-width: 100%;
   height: auto;
-  width: 80px; /* Ajuste o tamanho padrão da logo */
+  width: 60px; /* Ajuste o tamanho padrão da logo */
 }
 
 /* Estilo do menu */
@@ -54,7 +55,7 @@
 }
 
 #header nav ul li a:hover {
-  background-color: #555;
+  background: rgb(236, 166, 47);
   border-radius: 5px;
 }
 
@@ -231,6 +232,14 @@ main {
   justify-content: space-evenly;
   padding: 20px;
   width: 100%;
+  background: rgb(236, 166, 47);
+  background: linear-gradient(
+    90deg,
+    rgba(236, 166, 47, 1) 9%,
+    rgba(233, 123, 54, 0.9831582291119573) 40%,
+    rgba(218, 63, 81, 1) 83%,
+    rgba(215, 44, 87, 0.9159313383556548) 97%
+  );
 }
 
 /* Card do locutor */
@@ -301,7 +310,7 @@ main {
   margin: 20px;
   padding: 10px;
   border-radius: 16px;
-  background-color: #00000067;
+  background-color: #00000031;
   border-left: 2px solid #000; /* Borda lateral */
   border-right: 2px solid #000; /* Borda lateral */
 }
