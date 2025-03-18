@@ -73,14 +73,38 @@ body {
   border-radius: 4px;
   margin: 0 140px;
 }
+@keyframes waveGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
 
 .play-btn {
-  background: none;
+  font-size: 20px;
+  font-weight: bold;
+  text-transform: uppercase;
+  padding: 10px 20px;
   border: none;
-  color: white;
-  font-size: 24px;
+  background: linear-gradient(
+    90deg,
+    rgb(47, 47, 236) 9%,
+    rgba(233, 54, 75, 0.983) 40%,
+    rgba(218, 63, 81, 1) 83%,
+    rgba(215, 169, 44, 0.916) 97%
+  );
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: waveGradient 3s infinite linear;
   cursor: pointer;
-  margin-right: 10px;
+  border-radius: 8px;
+  outline: none;
 }
 
 /* Barra de progresso */

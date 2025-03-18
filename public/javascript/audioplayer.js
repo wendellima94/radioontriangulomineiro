@@ -1,5 +1,6 @@
 const audio = document.getElementById("audioPlayer");
 const playPause = document.getElementById("playPause");
+const playOrPause = document.getElementById("playOrPause");
 const progressBar = document.getElementById("progressBar");
 const progressContainer = document.getElementById("progressContainer");
 const volumeControl = document.getElementById("volumeControl");
@@ -7,10 +8,12 @@ const volumeControl = document.getElementById("volumeControl");
 playPause.addEventListener("click", () => {
   if (audio.paused) {
     audio.play();
-    playPause.textContent = "Rádio Ao Vivo ⏸️";
+    playPause.textContent = "Rádio Ao Vivo";
+    playOrPause.textContent = "⏸️";
   } else {
     audio.pause();
-    playPause.textContent = "Rádio Ao Vivo ▶️";
+    playPause.textContent = "Ouvir Rádio";
+    playOrPause.textContent = "▶️";
   }
 });
 
@@ -30,13 +33,12 @@ volumeControl.addEventListener("input", () => {
   audio.volume = volumeControl.value;
 });
 
-
 let currentSlide = 0;
-const slides = document.querySelectorAll('.slide');
+const slides = document.querySelectorAll(".slide");
 const totalSlides = slides.length;
 
 function showSlide(index) {
-  const sliderWrapper = document.querySelector('.slider-wrapper');
+  const sliderWrapper = document.querySelector(".slider-wrapper");
   const slideWidth = slides[0].clientWidth;
   sliderWrapper.style.transform = `translateX(-${index * slideWidth}px)`;
 }
