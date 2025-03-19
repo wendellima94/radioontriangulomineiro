@@ -213,6 +213,7 @@ const filterNews = () => {
   });
 };
 
+
 // Atualizar para carregar categorias na pesquisa também
 window.onload = () => {
   loadCategories();

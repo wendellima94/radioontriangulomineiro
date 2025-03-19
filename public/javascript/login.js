@@ -21,14 +21,14 @@ document
       const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.message || "E-mail ou senha incorretos!");
+        throw new Error(data.error || "E-mail ou senha incorretos!");
       }
 
       // Armazena o token no localStorage
       localStorage.setItem("token", data.token);
 
       alert("Login realizado com sucesso!");
-      window.location.href = "/admpainel"; // Redireciona para a página principal
+      window.location.href = "/admpainel"; // Redireciona para o painel
     } catch (error) {
       errorMessage.textContent = error.message;
     }

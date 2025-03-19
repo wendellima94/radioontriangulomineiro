@@ -6,6 +6,7 @@ const cors = require("cors");
 const newsRoutes = require("./routes/newsRoutes");
 const categoryRoutes = require("./routes/categoryRoutes");
 const userRoutes = require("./routes/userRoutes");
+const { authenticate, isAdmin } = require("./middlewares/authMiddleware");
 
 const app = express();
 const PORT = 3000;
@@ -15,29 +16,30 @@ app.use(bodyParser.json());
 app.use(cors());
 
 app.use("/api/v1/auth", userRoutes);
-
-//rotas
 app.use("/news", newsRoutes);
 app.use("/categories", categoryRoutes);
 
-// Middleware para servir arquivos estáticos
 app.use(express.static(path.join(__dirname, "public")));
+app.get("*", (req, res, next) => {
+  let filePath = path.join(__dirname, "public", req.path + ".html");
 
-// Rota Adm
-app.get("/admpainel", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "admpainel", "index.html"));
+  res.sendFile(filePath, (err) => {
+    if (err) {
+      next();
+    }
+  });
 });
 
+app.get("/admpainel", authenticate, isAdmin, (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "admpainel", "index.html"));
+  res.json({ message: "Bem-vindo ao painel admin!" });
+});
 app.get("/login", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "admpainel", "login.html"));
 });
-
-// Rota principal
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "index.html"));
 });
-
-// Exemplo de rota que consulta o banco
 app.get("/versao", (req, res) => {
   db.query("SELECT VERSION()", (err, results) => {
     if (err) {
