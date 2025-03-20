@@ -15,7 +15,7 @@ const loadCategories = async () => {
 
       const option = document.createElement("option");
       option.value = category.id;
-      option.textContent = category.NAME;
+      option.textContent = category.name;
       categoriesSelect.appendChild(option);
     });
   } catch (error) {
@@ -154,8 +154,12 @@ const loadNews = async () => {
                 <p><strong>Categorias:</strong> ${
                   news.categories || "Sem categoria"
                 }</p>
-                <button onclick="editNews(${news.id})">Editar</button>
-                <button onclick="deleteNews(${news.id})">Excluir</button>
+                <button class="edit-button" onclick="editNews(${
+                  news.id
+                })">Editar</button>
+                <button class="delete-button" onclick="deleteNews(${
+                  news.id
+                })">Excluir</button>
             `;
 
       newsList.appendChild(newsItem);
@@ -177,8 +181,8 @@ const loadSearchCategories = async () => {
 
     data.categories.forEach((category) => {
       const option = document.createElement("option");
-      option.value = category.NAME;
-      option.textContent = category.NAME;
+      option.value = category.name;
+      option.textContent = category.name;
       categoryFilter.appendChild(option);
     });
   } catch (error) {
@@ -212,7 +216,6 @@ const filterNews = () => {
     }
   });
 };
-
 
 // Atualizar para carregar categorias na pesquisa também
 window.onload = () => {

@@ -1,0 +1,121 @@
+/* Títulos */
+h1,
+h2 {
+  text-align: center;
+  margin-bottom: 15px;
+  color: #1976d2;
+}
+
+/* Estilização dos inputs */
+input,
+textarea {
+  width: 80%;
+  padding: 12px;
+  margin: 8px 0;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: border-color 0.3s ease-in-out;
+}
+
+input:focus {
+  border-color: rgba(233, 182, 54, 0.983);
+  box-shadow: 0px 0px 5px rgba(232, 232, 36, 0.983);
+  outline: none;
+}
+
+textarea:focus {
+  border-color: rgba(233, 182, 54, 0.983);
+  box-shadow: 0px 0px 5px rgba(232, 232, 36, 0.983);
+  outline: none;
+}
+
+/* Botões */
+button {
+  display: inline-block;
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  background-color: rgba(232, 232, 36, 0.983);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+}
+
+button:hover {
+  background-color: #115293;
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+/* Botões de ação (Editar / Excluir) */
+.action-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.add-button {
+  width: 14rem;
+  background-color: rgba(232, 232, 36, 0.983);
+}
+
+.add-button:hover {
+  background-color: #7cf21c;
+}
+
+.edit-button {
+  background-color: #fbc02d;
+}
+
+.edit-button:hover {
+  background-color: #f9a825;
+}
+
+.delete-button {
+  background-color: #d32f2f;
+}
+
+.delete-button:hover {
+  background-color: #b71c1c;
+}
+
+/* Lista de categorias */
+#category-list {
+  list-style: none;
+  padding: 0;
+}
+
+#category-list li {
+  background: white;
+  padding: 10px;
+  margin: 8px 0;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Filtro de categorias */
+#search-category {
+  width: 100%;
+  padding: 12px;
+  margin: 8px 0;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  font-size: 16px;
+  background-color: white;
+  transition: border-color 0.3s ease-in-out;
+}
+
+#search-category:focus {
+  border-color: #1976d2;
+  outline: none;
+}
+

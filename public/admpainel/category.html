@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gerenciar Categorias</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="../css/contentStyle.css" />
+  </head>
+  <body>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const headerHTML = `
+        <header class="admin-header">
+          <nav>
+            <ul>
+              <li><a href="index.html">Dashboard</a></li>
+              <li><a href="category">Gerenciar Categorias</a></li>
+              <li><a href="news.html">Gerenciar Notícias</a></li>
+              <li><a href="users.html">Gerenciar Usuários</a></li>
+            </ul>
+          </nav>
+        </header>
+      `;
+        document.body.insertAdjacentHTML("afterbegin", headerHTML);
+      });
+    </script>
+
+    <div class="admin-panel">
+      <h1>Gerenciar Categorias</h1>
+
+      <form id="category-form">
+        <label for="category-name">Nome da Categoria:</label>
+        <input
+          type="text"
+          id="category-name"
+          name="category-name"
+          placeholder="Pesquisar ou adicionar categoria"
+          required
+        />
+        <button class="add-button" type="submit">Concluir</button>
+      </form>
+
+      <h2>Categorias Existentes</h2>
+      <select id="search-category">
+        <option value="">Filtrar por categoria</option>
+      </select>
+      <ul id="category-list"></ul>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const categoryList = document.getElementById("category-list");
+        const categoryFilter = document.getElementById("search-category");
+        const categoryForm = document.getElementById("category-form");
+        const categoryNameInput = document.getElementById("category-name");
+        let editingCategoryId = null;
+
+        const loadCategories = () => {
+          fetch("/categories")
+            .then((response) => response.json())
+            .then((data) => {
+              categoryList.innerHTML = "";
+              categoryFilter.innerHTML =
+                '<option value="">Filtrar por categoria</option>';
+
+              data.categories.forEach((category) => {
+                const li = document.createElement("li");
+                li.textContent = category.name;
+
+                const buttonContainer = document.createElement("div");
+                buttonContainer.classList.add("action-buttons");
+
+                const editButton = document.createElement("button");
+                editButton.textContent = "Editar";
+                editButton.classList.add("edit-button"); // Adiciona a classe estilizada
+                editButton.onclick = () => {
+                  categoryNameInput.value = category.name;
+                  editingCategoryId = category.id;
+                };
+
+                const deleteButton = document.createElement("button");
+                deleteButton.textContent = "Excluir";
+                deleteButton.classList.add("delete-button"); // Adiciona a classe estilizada
+                deleteButton.onclick = () => deleteCategory(category.id);
+
+                buttonContainer.appendChild(editButton);
+                buttonContainer.appendChild(deleteButton);
+
+                li.appendChild(buttonContainer);
+                categoryList.appendChild(li);
+
+                const option = document.createElement("option");
+                option.value = category.name;
+                option.textContent = category.name;
+                categoryFilter.appendChild(option);
+              });
+            })
+            .catch((error) =>
+              console.error("Erro ao buscar categorias:", error)
+            );
+        };
+
+        categoryForm.addEventListener("submit", function (event) {
+          event.preventDefault();
+          const categoryName = categoryNameInput.value.trim();
+
+          if (!categoryName) return;
+
+          const method = editingCategoryId ? "PUT" : "POST";
+          const url = editingCategoryId
+            ? `/categories/${editingCategoryId}`
+            : "/categories";
+
+          fetch(url, {
+            method,
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ name: categoryName }),
+          })
+            .then((response) => response.json())
+            .then(() => {
+              categoryNameInput.value = "";
+              editingCategoryId = null;
+              loadCategories();
+            })
+            .catch((error) =>
+              console.error("Erro ao salvar categoria:", error)
+            );
+        });
+
+        const deleteCategory = (categoryId) => {
+          if (!confirm("Tem certeza que deseja excluir esta categoria?"))
+            return;
+
+          fetch(`/categories/${categoryId}`, { method: "DELETE" })
+            .then((response) => response.json())
+            .then(() => loadCategories())
+            .catch((error) =>
+              console.error("Erro ao excluir categoria:", error)
+            );
+        };
+
+        loadCategories();
+      });
+    </script>
+  </body>
+</html>

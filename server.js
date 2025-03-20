@@ -1,11 +1,14 @@
 const express = require("express");
 const db = require("./database/db");
+
 const path = require("path");
 const bodyParser = require("body-parser");
 const cors = require("cors");
+
 const newsRoutes = require("./routes/newsRoutes");
 const categoryRoutes = require("./routes/categoryRoutes");
 const userRoutes = require("./routes/userRoutes");
+
 const { authenticate, isAdmin } = require("./middlewares/authMiddleware");
 
 const app = express();
@@ -34,12 +37,15 @@ app.get("/admpainel", authenticate, isAdmin, (req, res) => {
   res.sendFile(path.join(__dirname, "public", "admpainel", "index.html"));
   res.json({ message: "Bem-vindo ao painel admin!" });
 });
+
 app.get("/login", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "admpainel", "login.html"));
 });
+
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "index.html"));
 });
+
 app.get("/versao", (req, res) => {
   db.query("SELECT VERSION()", (err, results) => {
     if (err) {

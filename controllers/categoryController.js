@@ -1,6 +1,5 @@
 const db = require("../database/db");
 
-// Função para obter todas as categorias
 const getAllCategories = (req, res) => {
   db.query("SELECT * FROM categories", (err, results) => {
     if (err) {
@@ -11,7 +10,6 @@ const getAllCategories = (req, res) => {
   });
 };
 
-// Função para adicionar uma nova categoria
 const addCategory = (req, res) => {
   const { name } = req.body;
   const query = "INSERT INTO categories (name) VALUES (?)";
@@ -20,12 +18,41 @@ const addCategory = (req, res) => {
       console.error("Erro ao adicionar categoria: " + err.stack);
       return res.status(500).json({ error: "Erro ao adicionar categoria" });
     }
-    res.status(201).json({ message: "Categoria adicionada com sucesso!", id: result.insertId });
+    res.status(201).json({
+      message: "Categoria adicionada com sucesso!",
+      id: result.insertId,
+    });
   });
 };
 
-// Exportando as funções
+const editCategory = (req, res) => {
+  const { id } = req.params;
+  const { name } = req.body;
+  const query = "UPDATE categories SET name = ? WHERE id = ?";
+  db.query(query, [name, id], (err, result) => {
+    if (err) {
+      console.error("Erro ao editar categoria: " + err.stack);
+      return res.status(500).json({ error: "Erro ao editar categoria" });
+    }
+    res.json({ message: "Categoria editada com sucesso!" });
+  });
+};
+
+const deleteCategory = (req, res) => {
+  const { id } = req.params;
+  const query = "DELETE FROM categories WHERE id = ?";
+  db.query(query, [id], (err, result) => {
+    if (err) {
+      console.error("Erro ao deletar categoria: " + err.stack);
+      return res.status(500).json({ error: "Erro ao deletar categoria" });
+    }
+    res.json({ message: "Categoria deletada com sucesso!" });
+  });
+};
+
 module.exports = {
   getAllCategories,
   addCategory,
+  editCategory,
+  deleteCategory,
 };

@@ -6,6 +6,7 @@
     <title>Painel de Administração</title>
     <link rel="icon" type="image/x-icon" href="../images/logo-white-bg.jpeg" />
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="../css/contentStyle.css" />
   </head>
 
   <body>
@@ -16,8 +17,8 @@
         <header class="admin-header">
           <nav>
             <ul>
-              <li><a href="index.html">Dashboard</a></li>
-              <li><a href="categories.html">Gerenciar Categorias</a></li>
+              <li><a href="index">Dashboard</a></li>
+              <li><a href="category">Gerenciar Categorias</a></li>
               <li><a href="news.html">Gerenciar Notícias</a></li>
               <li><a href="users.html">Gerenciar Usuários</a></li>
             </ul>
@@ -29,7 +30,8 @@
     </script>
 
     <div class="admin-panel">
-      <h1>Painel de Administração - Adicionar Notícia</h1>
+      <h1>Painel de Administração</h1>
+      <h2>Gerenciar Notícias</h2>
 
       <form id="news-form">
         <label for="title">Título da Notícia:</label>
@@ -49,7 +51,7 @@
           <!-- As categorias serão carregadas aqui pelo JavaScript -->
         </select>
 
-        <button type="submit">Adicionar Notícia</button>
+        <button class="add-button" type="submit">Adicionar Notícia</button>
       </form>
 
       <div id="message"></div>

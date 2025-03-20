@@ -8,7 +8,7 @@ const login = async (req, res) => {
   try {
     const user = await getUserByEmail(email);
 
-    console.log(user.password); // Verifique o valor da senha armazenada
+    console.log(user.password);
 
     if (!user) return res.status(401).json({ error: "Usuário não encontrado" });
 

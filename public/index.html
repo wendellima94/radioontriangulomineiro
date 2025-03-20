@@ -46,13 +46,17 @@
           style="background: none; border: none; font-size: 50px"
           id="playOrPause"
         >
-          <img src="images/radio_on_gif.gif" style="width: 50px; margin: 0;" alt="" />
+          <img
+            src="images/radio_on_gif.gif"
+            style="width: 50px; margin: 0"
+            alt=""
+          />
         </button>
       </div>
     </header>
 
     <main>
-      <div class="slider-container">
+      <!-- <div class="slider-container">
         <div class="slider">
           <img src="./images/bg-top-2.png" class="slide" alt="Imagem 1" />
           <img
@@ -77,15 +81,110 @@
         <div class="buttons">
           <button class="button" onclick="prevImage()">
             <i class="fas fa-chevron-left"></i>
-            <!-- Ícone de seta para a esquerda -->
           </button>
           <button class="button" onclick="nextImage()">
             <i class="fas fa-chevron-right"></i>
-            <!-- Ícone de seta para a direita -->
           </button>
         </div>
-      </div>
+      </div> -->
 
+      <div class="slider-container">
+        <div class="slider">
+          <img
+            src="https://www.radioonfm.com.br/images/bg-top-4.jpg"
+            class="slide"
+            alt="Imagem 1"
+          />
+          <img
+            src="https://www.radioonfm.com.br/images/bg-top-5.jpg"
+            class="slide"
+            alt="Imagem 2"
+            style="display: none"
+          />
+          <img
+            src="https://www.radioonfm.com.br/images/bg-top-2.png"
+            class="slide"
+            alt="Imagem 3"
+            style="display: none"
+          />
+          <img
+            src="https://www.radioonfm.com.br/images/bg-top-1.png"
+            class="slide"
+            alt="Imagem 4"
+            style="display: none"
+          />
+        </div>
+      </div>
+      <!-- music news -->
+      <section class="music-news">
+        <div class="music-news-container" id="music-news-grid">
+          <!-- As notícias musicais serão carregadas aqui via JavaScript -->
+        </div>
+      </section>
+
+      <script>
+        const loadJournalismNews = async () => {
+          try {
+            const response = await fetch("/news"); // Rota da API
+            const data = await response.json();
+
+            console.log("Dados recebidos:", data.news); // Debug
+
+            const journalismNewsGrid =
+              document.getElementById("music-news-grid");
+            journalismNewsGrid.innerHTML = ""; // Limpa antes de adicionar
+
+            // Filtra apenas notícias que possuem a categoria "Jornalismo"
+            const journalismNews = data.news
+              .filter((news) => {
+                if (!news.categories) return false; // Se não houver categorias, ignora
+
+                // Transforma a string de categorias em array
+                const categoriesArray = news.categories
+                  .split(",")
+                  .map((cat) => cat.trim().toLowerCase());
+
+                // Verifica se "jornalismo" está entre as categorias
+                return categoriesArray.includes("esportes");
+              })
+              .slice(0, 4); // Pega no máximo 4 notícias
+
+            console.log("Notícias filtradas:", journalismNews); // Debug
+
+            if (journalismNews.length === 0) {
+              journalismNewsGrid.innerHTML =
+                "<p style='color: white; text-align: center;'>Nenhuma notícia de jornalismo encontrada.</p>";
+              return;
+            }
+
+            journalismNews.forEach((news) => {
+              const newsItem = document.createElement("div");
+              newsItem.classList.add("music-news-card");
+
+              newsItem.innerHTML = `
+        <img src="${news.image}" alt="${news.title}">
+        <div class="music-news-info">
+          <h3 class="music-news-title">${news.title}</h3>
+          <p class="music-news-description">${news.description.substring(
+            0,
+            80
+          )}...</p>
+          <a href="${
+            news.url
+          }" class="music-saiba-mais" target="_blank">Saiba mais</a>
+        </div>
+      `;
+
+              journalismNewsGrid.appendChild(newsItem);
+            });
+          } catch (error) {
+            console.error("Erro ao carregar notícias de jornalismo:", error);
+          }
+        };
+
+        // Chama a função ao carregar a página
+        document.addEventListener("DOMContentLoaded", loadJournalismNews);
+      </script>
       <!-- locutores -->
 
       <div
