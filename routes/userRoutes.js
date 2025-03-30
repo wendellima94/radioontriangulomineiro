@@ -5,7 +5,6 @@ const { authenticate, isAdmin } = require("../middlewares/authMiddleware");
 
 const router = express.Router();
 
-// Rota de login
 router.post("/login", login);
 
 // Rota para criar usuário (somente admin)

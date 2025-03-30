@@ -1,7 +1,6 @@
 const bcrypt = require("bcrypt");
 const pool = require("./database/db");
 
-// Função para criar usuário admin se ele não existir
 const createAdminUser = async () => {
   try {
     const [results] = await pool
@@ -9,7 +8,7 @@ const createAdminUser = async () => {
       .query("SELECT COUNT(*) AS count FROM users WHERE role = 'admin'");
 
     if (results[0].count === 0) {
-      const hashedPassword = await bcrypt.hash("admin123", 10); // Criptografa a senha
+      const hashedPassword = await bcrypt.hash("admin123", 10);
       await pool
         .promise()
         .query(
@@ -23,5 +22,4 @@ const createAdminUser = async () => {
   }
 };
 
-// Executa a função ao iniciar o servidor
 createAdminUser();

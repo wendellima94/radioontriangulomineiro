@@ -23,13 +23,12 @@
     <link rel="stylesheet" href="./css/audioplayer.css" />
     <link rel="stylesheet" href="./css/audioplayer.css" />
     <link rel="stylesheet" href="./css/styles.css" />
+    <link rel="stylesheet" href="./css/footer.css" />
+    <link rel="stylesheet" href="./css/menu.css" />
   </head>
-
-  <style></style>
-
   <body>
     <!-- Header fixo -->
-    <header id="header">
+    <!-- <header id="header">
       <img src="./images/logo-white-no-bg.jpeg" alt="Logo" class="logo" />
       <nav>
         <ul>
@@ -41,7 +40,7 @@
         </ul>
       </nav>
       <div class="logo-container">
-        <button class="play-btn" id="playPause">Ouvir Rádio</button>
+        <button class="play-btn">Ouvir Rádio</button>
         <button
           style="background: none; border: none; font-size: 50px"
           id="playOrPause"
@@ -53,8 +52,25 @@
           />
         </button>
       </div>
-    </header>
+    </header> -->
+    <!-- 
+    <div id="header"></div>
+    <script src="./javascript/menu.js"></script> -->
+    <div id="menu-container"></div>
 
+    <script>
+      fetch("./includes/menu.html")
+        .then((response) => response.text())
+        .then((data) => {
+          document.getElementById("menu-container").innerHTML = data;
+    
+          const script = document.createElement("script");
+          script.src = "./javascript/menu.js";
+          script.onload = () => initializeMenu(); 
+          document.body.appendChild(script);
+        });
+    </script>
+    
     <main>
       <!-- <div class="slider-container">
         <div class="slider">
@@ -115,39 +131,33 @@
           />
         </div>
       </div>
-      <!-- music news -->
       <section class="music-news">
-        <div class="music-news-container" id="music-news-grid">
-          <!-- As notícias musicais serão carregadas aqui via JavaScript -->
-        </div>
+        <div class="music-news-container" id="music-news-grid"></div>
       </section>
 
       <script>
         const loadJournalismNews = async () => {
           try {
-            const response = await fetch("/news"); // Rota da API
+            const response = await fetch("/news");
             const data = await response.json();
 
-            console.log("Dados recebidos:", data.news); // Debug
+            console.log("Dados recebidos:", data.news);
 
             const journalismNewsGrid =
               document.getElementById("music-news-grid");
-            journalismNewsGrid.innerHTML = ""; // Limpa antes de adicionar
+            journalismNewsGrid.innerHTML = "";
 
-            // Filtra apenas notícias que possuem a categoria "Jornalismo"
             const journalismNews = data.news
               .filter((news) => {
-                if (!news.categories) return false; // Se não houver categorias, ignora
+                if (!news.categories) return false;
 
-                // Transforma a string de categorias em array
                 const categoriesArray = news.categories
                   .split(",")
                   .map((cat) => cat.trim().toLowerCase());
 
-                // Verifica se "jornalismo" está entre as categorias
                 return categoriesArray.includes("esportes");
               })
-              .slice(0, 4); // Pega no máximo 4 notícias
+              .slice(0, 4);
 
             console.log("Notícias filtradas:", journalismNews); // Debug
 
@@ -316,7 +326,8 @@
       </section>
     </main>
 
-    <footer></footer>
+    <div id="footer"></div>
+    <script src="./javascript/footer.js"></script>
 
     <div class="player-container">
       <!-- Capa do Álbum + Nome da Música -->
@@ -381,8 +392,6 @@
           newsContainer.appendChild(article);
         });
       }
-
-      // Chamada da função ao carregar a página
       document.addEventListener("DOMContentLoaded", loadNews);
     </script>
 

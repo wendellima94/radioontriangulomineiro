@@ -8,12 +8,10 @@ const volumeControl = document.getElementById("volumeControl");
 playPause.addEventListener("click", () => {
   if (audio.paused) {
     audio.play();
-    playPause.textContent = "Rádio Ao Vivo";
-    playOrPause.textContent = "⏸️";
+    playPause.textContent = "Rádio Ao Vivo ⏸️";
   } else {
     audio.pause();
-    playPause.textContent = "Ouvir Rádio";
-    playOrPause.textContent = "▶️";
+    playPause.textContent = "Ouvir Rádio ▶️";
   }
 });
 

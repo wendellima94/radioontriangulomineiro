@@ -12,9 +12,9 @@ const login = async (req, res) => {
 
     if (!user) return res.status(401).json({ error: "Usuário não encontrado" });
 
-    console.log(user); // Log para depuração
+    console.log(user);
 
-    const passwordMatch = await bcrypt.compare(password, user.password); // Verifica a senha
+    const passwordMatch = await bcrypt.compare(password, user.password);
     if (!passwordMatch)
       return res.status(401).json({ error: "Senha incorreta" });
 

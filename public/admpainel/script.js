@@ -1,7 +1,7 @@
 // Função para carregar categorias e popular o select
 const loadCategories = async () => {
   try {
-    const response = await fetch("/categories"); // Rota para obter categorias
+    const response = await fetch("/categories");
     const data = await response.json();
 
     console.log("Resposta da API:", data); // Verifica os dados recebidos
