@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes da Notícia</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="news-details">
+        <h1 id="news-title"></h1>
+        <img id="news-image" src="" alt="" width="100%">
+        <p id="news-description"></p>
+        <div id="news-content"></div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", async function () {
+            const params = new URLSearchParams(window.location.search);
+            const newsId = params.get("id");
+
+            if (newsId) {
+                try {
+                    const response = await fetch(`/news/${newsId}`); // Rota para obter a notícia específica
+                    const news = await response.json();
+
+                    // Exibir os dados da notícia na página
+                    document.getElementById("news-title").textContent = news.title;
+                    document.getElementById("news-image").src = news.image;
+                    document.getElementById("news-description").textContent = news.description;
+                    document.getElementById("news-content").innerHTML = news.content; // Supondo que você tenha um campo "content"
+                } catch (error) {
+                    console.error("Erro ao carregar a notícia:", error);
+                }
+            } else {
+                alert("Notícia não encontrada!");
+            }
+        });
+    </script>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .news-details {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            font-size: 2rem;
+            color: #333;
+        }
+        p {
+            font-size: 1rem;
+            color: #555;
+        }
+        #news-image {
+            margin-top: 20px;
+            border-radius: 5px;
+        }
+    </style>
+</body>
+</html>

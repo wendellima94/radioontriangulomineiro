@@ -15,7 +15,7 @@ body {
 
 .admin-panel {
   width: 80%;
-  max-width: 800px;
+  max-width: 1200px;
   margin: 50px auto;
   padding: 20px;
   background-color: #fff;
@@ -88,23 +88,58 @@ form button:hover {
   gap: 15px;
 }
 
+.category-block {
+  margin-bottom: 20px;
+}
+
+.category-block h3 {
+  background-color:  rgba(233, 123, 54, 0.9831582291119573);
+  color: white;
+  padding: 10px;
+  margin: 10px 0;
+  font-size: 20px;
+  text-transform: uppercase;
+  border-radius: 5px;
+}
+
+.news-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Ajuste para cards lado a lado */
+  gap: 20px;
+}
+
 .news-item {
+  text-overflow: ellipsis;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
   background: white;
+  border: 1px solid black;
   padding: 15px;
   border-radius: 8px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
   position: relative;
 }
 
-.news-item h3 {
+.news-item h4 {
   margin: 0;
   color: #333;
 }
 
 .news-item p {
   color: #555;
+  max-width: 15ch;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
-
+.news-item span {
+  text-align: center;
+  padding: 20px 0;
+  color: teal;
+  font-size: 20px;
+}
 .news-item img {
   max-width: 100%;
   height: auto;

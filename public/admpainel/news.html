@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notícias por Categoria</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="admin-panel">
+        <h1>Notícias por Categoria</h1>
+        <div id="news-container"></div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", async function () {
+            try {
+                const response = await fetch("/news"); // Rota da API
+                const data = await response.json();
+                const newsContainer = document.getElementById("news-container");
+
+                // Agrupar notícias por categoria
+                const categorizedNews = {};
+                data.news.forEach(news => {
+                    if (!news.categories) return;
+
+                    news.categories.split(",").forEach(category => {
+                        const trimmedCategory = category.trim();
+                        if (!categorizedNews[trimmedCategory]) {
+                            categorizedNews[trimmedCategory] = [];
+                        }
+                        categorizedNews[trimmedCategory].push(news);
+                    });
+                });
+
+                // Gerar HTML para cada categoria
+                for (const category in categorizedNews) {
+                    const categoryBlock = document.createElement("div");
+                    categoryBlock.classList.add("category-block");
+                    categoryBlock.innerHTML = `<h2>${category}</h2>`;
+
+                    const newsGrid = document.createElement("div");
+                    newsGrid.classList.add("news-grid");
+
+                    categorizedNews[category].forEach(news => {
+                        const newsItem = document.createElement("div");
+                        newsItem.classList.add("news-card");
+
+                        newsItem.innerHTML = `
+                            <img src="${news.image}" alt="${news.title}">
+                            <div class="news-info">
+                                <h3>${news.title}</h3>
+                                <p>${news.description.substring(0, 80)}...</p>
+                                <a href="news.html?id=${news.id}">Saiba mais</a> <!-- Link para a página de detalhes -->
+                            </div>
+                        `;
+                        newsGrid.appendChild(newsItem);
+                    });
+
+                    categoryBlock.appendChild(newsGrid);
+                    newsContainer.appendChild(categoryBlock);
+                }
+            } catch (error) {
+                console.error("Erro ao carregar as notícias:", error);
+            }
+        });
+    </script>
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .admin-panel {
+            max-width: 1200px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .category-block {
+            margin-bottom: 30px;
+        }
+        .category-block h2 {
+            background: #d72657;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .news-card {
+            background: white;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        .news-card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+        .news-info {
+            padding: 10px;
+            text-align: center;
+        }
+        .news-info h3 {
+            font-size: 1.2rem;
+        }
+        .news-info p {
+            font-size: 0.9rem;
+            color: #555;
+        }
+        .news-info a {
+            color: #d72657;
+            font-weight: bold;
+            text-decoration: none;
+        }
+        .news-info a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</body>
+</html>

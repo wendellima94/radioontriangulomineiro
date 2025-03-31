@@ -48,6 +48,10 @@ const editNews = (newsId) => {
 
       // Armazena o ID da notícia que está sendo editada
       editingNewsId = newsId;
+
+      // Rola para o formulário de edição
+      const formElement = document.getElementById("news-form");
+      formElement.scrollIntoView({ behavior: "smooth", block: "start" });
     })
     .catch((error) =>
       console.error("Erro ao carregar notícia para edição:", error)
@@ -140,30 +144,48 @@ const loadNews = async () => {
       return;
     }
 
-    // Adicionando as notícias à página
+    // Agrupar as notícias por categoria
+    const categorizedNews = {};
+
     data.news.forEach((news) => {
-      console.log("Notícia recebida:", news); // Debugging
-
-      const newsItem = document.createElement("div");
-      newsItem.classList.add("news-item");
-
-      newsItem.innerHTML = `
-                <h3>${news.title}</h3>
-                <p>${news.description}</p>
-                <img src="${news.image}" alt="Imagem da notícia" width="200">
-                <p><strong>Categorias:</strong> ${
-                  news.categories || "Sem categoria"
-                }</p>
-                <button class="edit-button" onclick="editNews(${
-                  news.id
-                })">Editar</button>
-                <button class="delete-button" onclick="deleteNews(${
-                  news.id
-                })">Excluir</button>
-            `;
-
-      newsList.appendChild(newsItem);
+      // Se houver categorias
+      const categories = news.categories ? news.categories.split(",") : ["Sem categoria"];
+      categories.forEach((category) => {
+        if (!categorizedNews[category]) {
+          categorizedNews[category] = [];
+        }
+        categorizedNews[category].push(news);
+      });
     });
+
+    // Adicionando as notícias agrupadas por categoria
+    for (const category in categorizedNews) {
+      const categoryBlock = document.createElement("div");
+      categoryBlock.classList.add("category-block");
+      categoryBlock.innerHTML = `<h3>${category}</h3>`;
+
+      const newsGrid = document.createElement("div");
+      newsGrid.classList.add("news-grid");
+
+      categorizedNews[category].forEach((news) => {
+        const newsItem = document.createElement("div");
+        newsItem.classList.add("news-item");
+
+        newsItem.innerHTML = `
+          <h4>${news.title}</h4>
+          <p>${news.description}</p>
+          <img src="${news.image}" alt="Imagem da notícia" width="200">
+          <span><strong>Categorias:</strong> ${news.categories || "Sem categoria"}</span>
+          <button class="edit-button" onclick="editNews(${news.id})">Editar</button>
+          <button class="delete-button" onclick="deleteNews(${news.id})">Excluir</button>
+        `;
+
+        newsGrid.appendChild(newsItem);
+      });
+
+      categoryBlock.appendChild(newsGrid);
+      newsList.appendChild(categoryBlock);
+    }
   } catch (error) {
     console.error("Erro ao carregar notícias:", error);
   }
