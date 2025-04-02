@@ -63,14 +63,14 @@
         .then((response) => response.text())
         .then((data) => {
           document.getElementById("menu-container").innerHTML = data;
-    
+
           const script = document.createElement("script");
           script.src = "./javascript/menu.js";
-          script.onload = () => initializeMenu(); 
+          script.onload = () => initializeMenu();
           document.body.appendChild(script);
         });
     </script>
-    
+
     <main>
       <!-- <div class="slider-container">
         <div class="slider">
@@ -212,43 +212,43 @@
         <section class="locutores-section">
           <div class="locutor-card">
             <img
-              src="https://th.bing.com/th/id/OIP.W1_cmnXqUYGgcUt2QQdCKwHaEK?rs=1&pid=ImgDetMain"
-              alt="Locutor 1"
+              src="./images/Erika Borges.jpg"
+              alt="Erika Borges"
               class="locutor-img"
             />
-            <h3 class="locutor-name">Locutor 1</h3>
+            <h3 class="locutor-name">Érika Borges</h3>
           </div>
           <div class="locutor-card">
             <img
-              src="https://th.bing.com/th/id/OIP.18dq0GX6lBqo19aOUYK3SgHaHa?pid=ImgDet&w=474&h=474&rs=1"
+              src="./images/Fabiana Cunha.jpg"
               alt="Locutor 2"
               class="locutor-img"
             />
-            <h3 class="locutor-name">Locutor 2</h3>
+            <h3 class="locutor-name">Fabiana Cunha</h3>
           </div>
           <div class="locutor-card">
             <img
-              src="https://www.oexplorador.com.br/exp/wp-content/uploads/2020/11/aa-112.jpg"
+              src="./images/Rafael Ferreira.jpg"
               alt="Locutor 3"
               class="locutor-img"
             />
-            <h3 class="locutor-name">Locutor 3</h3>
+            <h3 class="locutor-name">Rafael Ferreira</h3>
           </div>
           <div class="locutor-card">
             <img
-              src="https://malucellidotlive.files.wordpress.com/2019/03/diguinho-coruja-divulgac3a7c3a3o-1.jpeg?w=1024"
+              src="./images/Renata Quirino.jpg"
               alt="Locutor 4"
               class="locutor-img"
             />
-            <h3 class="locutor-name">Locutor 1</h3>
+            <h3 class="locutor-name">Renata Quirino</h3>
           </div>
           <div class="locutor-card">
             <img
-              src="https://th.bing.com/th/id/OIP.Ykpat9OeVYLgg8ro70lBIAHaEo?rs=1&pid=ImgDetMain"
+              src="./images/Vitoria Oliveira.jpg"
               alt="Locutor 5"
               class="locutor-img"
             />
-            <h3 class="locutor-name">Locutor 2</h3>
+            <h3 class="locutor-name">Vitória Oliveira</h3>
           </div>
 
           <!-- Adicione mais locutores aqui -->
